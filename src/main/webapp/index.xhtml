@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+      xmlns:p="http://primefaces.org/ui"
+      >
+
+    <h:head></h:head>
+
+    <h:body>
+        <p:dataTable var="aluno" value="#{alunoMB.alunos}" style="width: 800px;">
+            <p:column headerText="Nome">
+                <h:outputText value="#{aluno.nome}" />
+            </p:column>
+            <p:column headerText="Endereço">
+                <h:outputText value="#{aluno.endereco}" />
+            </p:column>
+            <p:column headerText="RA">
+                <h:outputText value="#{aluno.ra}" />
+            </p:column>
+            <p:column headerText="CPF">
+                <h:outputText value="#{aluno.cpf}" />
+            </p:column>
+            <p:column headerText="Curso">
+                <h:outputText value="#{aluno.curso}" />
+            </p:column>
+            <p:column headerText="Telefone">
+                <h:outputText value="#{aluno.telefone}" />
+            </p:column>
+            <p:column headerText="Data Matrícula">
+                <h:outputText value="#{aluno.dataMatricula}">
+                    <f:convertDateTime pattern="dd/MM/yyyy" />
+                </h:outputText>
+            </p:column>
+        </p:dataTable>
+
+        <p></p>
+        <legend><h2>Tabela com filtro</h2></legend>
+        <h:form>
+            <p:dataTable var="aluno" value="#{alunoMB.alunos}" style="width: 800px;">
+                <p:column headerText="Nome" sortBy="#{aluno.nome}" filterBy="#{aluno.nome}">
+                    <h:outputText value="#{aluno.nome}" />
+                </p:column>
+                <p:column headerText="Endereço" sortBy="#{aluno.endereco}" filterBy="#{aluno.endereco}">
+                    <h:outputText value="#{aluno.endereco}" />
+                </p:column>
+                <p:column headerText="RA" sortBy="#{aluno.ra}" filterBy="#{aluno.ra}">
+                    <h:outputText value="#{aluno.ra}" />
+                </p:column>
+                <p:column headerText="CPF" sortBy="#{aluno.cpf}" filterBy="#{aluno.cpf}">
+                    <h:outputText value="#{aluno.cpf}" />
+                </p:column>
+                <p:column headerText="Curso" sortBy="#{aluno.curso}" filterBy="#{aluno.curso}">
+                    <h:outputText value="#{aluno.curso}" />
+                </p:column>
+                <p:column headerText="Telefone" sortBy="#{aluno.telefone}" filterBy="#{aluno.telefone}">
+                    <h:outputText value="#{aluno.telefone}" />
+                </p:column>
+                <p:column headerText="Data Matrícula" sortBy="#{aluno.dataMatricula}" filterBy="#{aluno.dataMatricula}">
+                    <h:outputText value="#{aluno.dataMatricula}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                </p:column>
+            </p:dataTable>        
+        </h:form>
+
+        <p></p>
+        <legend><h2>Tabela com cabeçalho e rodapé</h2></legend>
+        <h:form>
+            <p:dataTable var="aluno" value="#{alunoMB.alunos}" style="width: 800px;">
+                <f:facet name="header">
+                    Lista de Alunos Cadastrados
+                </f:facet>       
+
+                <p:column headerText="Nome" sortBy="#{aluno.nome}" filterBy="#{aluno.nome}">
+                    <h:outputText value="#{aluno.nome}" />
+                </p:column>
+                <p:column headerText="Endereço" sortBy="#{aluno.endereco}" filterBy="#{aluno.endereco}">
+                    <h:outputText value="#{aluno.endereco}" />
+                </p:column>
+                <p:column headerText="RA" sortBy="#{aluno.ra}" filterBy="#{aluno.ra}">
+                    <h:outputText value="#{aluno.ra}" />
+                </p:column>
+                <p:column headerText="CPF" sortBy="#{aluno.cpf}" filterBy="#{aluno.cpf}">
+                    <h:outputText value="#{aluno.cpf}" />
+                </p:column>
+                <p:column headerText="Curso" sortBy="#{aluno.curso}" filterBy="#{aluno.curso}">
+                    <h:outputText value="#{aluno.curso}" />
+                </p:column>
+                <p:column headerText="Telefone" sortBy="#{aluno.telefone}" filterBy="#{aluno.telefone}">
+                    <h:outputText value="#{aluno.telefone}" />
+                </p:column>
+                <p:column headerText="Data Matrícula" sortBy="#{aluno.dataMatricula}" filterBy="#{aluno.dataMatricula}">
+                    <h:outputText value="#{aluno.dataMatricula}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                </p:column>
+
+                <f:facet name="footer">
+                    <h:outputText value="Existem " />
+                    <h:outputText value="#{fn:length(alunoMB.alunos)}" />
+                    <h:outputText value=" alunos cadastrados. " />
+                </f:facet>
+
+            </p:dataTable>        
+        </h:form>
+
+        <p></p>
+        <legend><h2>Tabela com paginação</h2></legend>
+        <h:form>
+            <p:dataTable var="aluno" value="#{alunoMB.alunos40}" style="width: 800px;" 
+                         rows="5" paginator="true">
+
+                <f:facet name="header">
+                    Lista de Alunos Cadastrados
+                </f:facet>       
+
+                <p:column headerText="Nome" sortBy="#{aluno.nome}" filterBy="#{aluno.nome}">
+                    <h:outputText value="#{aluno.nome}" />
+                </p:column>
+                <p:column headerText="Endereço" sortBy="#{aluno.endereco}" filterBy="#{aluno.endereco}">
+                    <h:outputText value="#{aluno.endereco}" />
+                </p:column>
+                <p:column headerText="RA" sortBy="#{aluno.ra}" filterBy="#{aluno.ra}">
+                    <h:outputText value="#{aluno.ra}" />
+                </p:column>
+                <p:column headerText="CPF" sortBy="#{aluno.cpf}" filterBy="#{aluno.cpf}">
+                    <h:outputText value="#{aluno.cpf}" />
+                </p:column>
+                <p:column headerText="Curso" sortBy="#{aluno.curso}" filterBy="#{aluno.curso}">
+                    <h:outputText value="#{aluno.curso}" />
+                </p:column>
+                <p:column headerText="Telefone" sortBy="#{aluno.telefone}" filterBy="#{aluno.telefone}">
+                    <h:outputText value="#{aluno.telefone}" />
+                </p:column>
+                <p:column headerText="Data Matrícula" sortBy="#{aluno.dataMatricula}" filterBy="#{aluno.dataMatricula}">
+                    <h:outputText value="#{aluno.dataMatricula}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                </p:column>
+
+                <f:facet name="footer">
+                    <h:outputText value="Existem " />
+                    <h:outputText value="#{fn:length(alunoMB.alunos40)}" />
+                    <h:outputText value=" alunos cadastrados. " />
+                </f:facet>
+
+            </p:dataTable>   
+        </h:form>
+
+        <p></p>
+        <legend><h2>Tabela com detalhes aparecendo em um pop-up</h2></legend>
+        <h:form id="form">
+            <p:dataTable var="aluno" value="#{alunoMB.alunos}" style="width: 800px;">
+
+
+                <p:column headerText="Nome" sortBy="#{aluno.nome}" filterBy="#{aluno.nome}">
+                    <h:outputText value="#{aluno.nome}" />
+                </p:column>
+                <p:column headerText="Endereço" sortBy="#{aluno.endereco}" filterBy="#{aluno.endereco}">
+                    <h:outputText value="#{aluno.endereco}" />
+                </p:column>
+                <p:column headerText="RA" sortBy="#{aluno.ra}" filterBy="#{aluno.ra}">
+                    <h:outputText value="#{aluno.ra}" />
+                </p:column>
+
+                <p:column style="width: 32px; text-align: center">
+                    <p:commandButton update=":form:alunoDetail" 
+                                     oncomplete="PF('alunoDialog').show()" 
+                                     icon="ui-icon-search"  title="View">
+                        <f:setPropertyActionListener value="#{aluno}" 
+                                                     target="#{alunoMB.selectedAluno}" />
+                    </p:commandButton>
+                </p:column>
+
+            </p:dataTable>        
+
+            <p:dialog header="Detalhes Aluno" widgetVar="alunoDialog" modal="true" 
+                      showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputLabel id="alunoDetail" style="text-align: center;">
+                    <p:panelGrid columns="2" rendered="#{not empty alunoMB.selectedAluno}" 
+                                 columnClasses="label,value">
+                        <h:outputText value="Nome:"/>
+                        <h:outputText value="#{alunoMB.selectedAluno.nome}"/>
+                        <h:outputText value="Endereço:"/>
+                        <h:outputText value="#{alunoMB.selectedAluno.endereco}"/>
+                        <h:outputText value="RA:"/>
+                        <h:outputText value="#{alunoMB.selectedAluno.ra}"/>
+                        <h:outputText value="Curso:"/>
+                        <h:outputText value="#{alunoMB.selectedAluno.curso}"/>
+                    </p:panelGrid>
+                </p:outputLabel>
+            </p:dialog>
+
+        </h:form>
+
+
+        <p></p>
+        <legend><h2>Tabela com edição de valores</h2></legend>
+        <h:form>
+            <p:dataTable var="aluno" value="#{alunoMB.alunos}" style="width: 800px;" 
+                         editable="true" editMode="cell">
+
+                <p:column headerText="Nome">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{aluno.nome}"/></f:facet>
+                        <f:facet name="input"><p:inputText value="#{aluno.nome}"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Endereço">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{aluno.endereco}"/></f:facet>
+                        <f:facet name="input"><p:inputText value="#{aluno.endereco}"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="RA">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{aluno.ra}"/></f:facet>
+                        <f:facet name="input"><p:inputText value="#{aluno.ra}"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="CPF">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{aluno.cpf}"/></f:facet>
+                        <f:facet name="input"><p:inputText id="modeInput" value="#{aluno.cpf}"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Curso">
+                    <h:outputText value="#{aluno.curso}" />
+                </p:column>
+                <p:column headerText="Telefone">
+                    <h:outputText value="#{aluno.telefone}" />
+                </p:column>
+                <p:column headerText="Data Matrícula">
+                    <h:outputText value="#{aluno.dataMatricula}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                </p:column>
+
+            </p:dataTable>       
+
+        </h:form>
+
+
+        <p></p>
+        <legend><h2>Tabela com exportação de arquivos</h2></legend>
+        <h:form>
+            <p:dataTable id="alunos" var="aluno" value="#{alunoMB.alunos40}" 
+                         style="width: 800px;" 
+                         rows="5" paginator="true">
+
+                <f:facet name="header">
+                    Lista de Alunos Cadastrados
+                </f:facet>       
+
+                <p:column headerText="Nome" sortBy="#{aluno.nome}" filterBy="#{aluno.nome}">
+                    <h:outputText value="#{aluno.nome}" />
+                </p:column>
+                <p:column headerText="Endereço" sortBy="#{aluno.endereco}" filterBy="#{aluno.endereco}">
+                    <h:outputText value="#{aluno.endereco}" />
+                </p:column>
+                <p:column headerText="RA" sortBy="#{aluno.ra}" filterBy="#{aluno.ra}">
+                    <h:outputText value="#{aluno.ra}" />
+                </p:column>
+                <p:column headerText="CPF" sortBy="#{aluno.cpf}" filterBy="#{aluno.cpf}">
+                    <h:outputText value="#{aluno.cpf}" />
+                </p:column>
+                <p:column headerText="Curso" sortBy="#{aluno.curso}" filterBy="#{aluno.curso}">
+                    <h:outputText value="#{aluno.curso}" />
+                </p:column>
+                <p:column headerText="Telefone" sortBy="#{aluno.telefone}" filterBy="#{aluno.telefone}">
+                    <h:outputText value="#{aluno.telefone}" />
+                </p:column>
+                <p:column headerText="Data Matrícula" sortBy="#{aluno.dataMatricula}" filterBy="#{aluno.dataMatricula}">
+                    <h:outputText value="#{aluno.dataMatricula}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                </p:column>
+
+                <f:facet name="footer">
+                    <h:outputText value="Existem " />
+                    <h:outputText value="#{fn:length(alunoMB.alunos40)}" />
+                    <h:outputText value=" alunos cadastrados. " />
+                </f:facet>
+
+            </p:dataTable>   
+
+            <h:commandLink>
+                <h:outputText value="XLS"/>
+                <p:dataExporter type="xls" target="alunos" fileName="alunos" 
+                                pageOnly="false"/>
+            </h:commandLink>
+            -----
+            <h:commandLink>
+                <h:outputText value="PDF"/>
+                <p:dataExporter type="pdf" target="alunos" fileName="alunos" 
+                                pageOnly="false"/>
+            </h:commandLink>
+            -----
+            <h:commandLink>
+                <h:outputText value="CSV"/>
+                <p:dataExporter type="csv" target="alunos" fileName="alunos" 
+                                pageOnly="false"/>
+            </h:commandLink>
+            -----
+            <h:commandLink>
+                <h:outputText value="XML"/>
+                <p:dataExporter type="xml" target="alunos" fileName="alunos" 
+                                pageOnly="false"/>
+            </h:commandLink>
+
+        </h:form>        
+
+        <p></p>
+        <legend><h2>Tabela com a opção lazy load</h2></legend>
+        <h:form>
+            <p:dataTable id="alunos" var="aluno" value="#{alunoMB.lazyModel}" 
+                         style="width: 800px;" 
+                         rows="5" paginator="true" lazy="true">
+
+                <f:facet name="header">
+                    Lista de Alunos Cadastrados
+                </f:facet>       
+
+                <p:column headerText="Nome" sortBy="#{aluno.nome}" filterBy="#{aluno.nome}">
+                    <h:outputText value="#{aluno.nome}" />
+                </p:column>
+                <p:column headerText="Endereço" sortBy="#{aluno.endereco}" filterBy="#{aluno.endereco}">
+                    <h:outputText value="#{aluno.endereco}" />
+                </p:column>
+                <p:column headerText="RA" sortBy="#{aluno.ra}" filterBy="#{aluno.ra}">
+                    <h:outputText value="#{aluno.ra}" />
+                </p:column>
+                <p:column headerText="CPF" sortBy="#{aluno.cpf}" filterBy="#{aluno.cpf}">
+                    <h:outputText value="#{aluno.cpf}" />
+                </p:column>
+                <p:column headerText="Curso" sortBy="#{aluno.curso}" filterBy="#{aluno.curso}">
+                    <h:outputText value="#{aluno.curso}" />
+                </p:column>
+                <p:column headerText="Telefone" sortBy="#{aluno.telefone}" filterBy="#{aluno.telefone}">
+                    <h:outputText value="#{aluno.telefone}" />
+                </p:column>
+                <p:column headerText="Data Matrícula" sortBy="#{aluno.dataMatricula}" filterBy="#{aluno.dataMatricula}">
+                    <h:outputText value="#{aluno.dataMatricula}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                </p:column>
+
+                <f:facet name="footer">
+                    <h:outputText value="Existem " />
+                    <h:outputText value="#{fn:length(alunoMB.alunos40)}" />
+                    <h:outputText value=" alunos cadastrados. " />
+                </f:facet>
+
+            </p:dataTable>   
+
+            <h:commandLink>
+                <h:outputText value="XLS"/>
+                <p:dataExporter type="xls" target="alunos" fileName="alunos" 
+                                pageOnly="false"/>
+            </h:commandLink>
+            -----
+            <h:commandLink>
+                <h:outputText value="PDF"/>
+                <p:dataExporter type="pdf" target="alunos" fileName="alunos" 
+                                pageOnly="false"/>
+            </h:commandLink>
+            -----
+            <h:commandLink>
+                <h:outputText value="CSV"/>
+                <p:dataExporter type="csv" target="alunos" fileName="alunos" 
+                                pageOnly="false"/>
+            </h:commandLink>
+            -----
+            <h:commandLink>
+                <h:outputText value="XML"/>
+                <p:dataExporter type="xml" target="alunos" fileName="alunos" 
+                                pageOnly="false"/>
+            </h:commandLink>
+
+
+        </h:form> 
+    </h:body>
+
+</html>
